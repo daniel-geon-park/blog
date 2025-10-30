@@ -1,6 +1,6 @@
 ---
 layout: post
-title: '<a href="https://github.com/daniel-geon-park/triton_bwd">`triton_bwd`</a>: Enabling Backpropagation for the OpenAI Triton language'
+title: '`triton_bwd`: Enabling Backpropagation for the OpenAI Triton language'
 ---
 
 Everyone knows the [OpenAI Triton language](https://triton-lang.org/) is amazing. Writing CUDA kernels in CUDA C++ is such a pain, so writing Python in a pytorch-like syntax that compiles down to GPU machine code and getting the same blazingly-fast performance is such a godsend.
