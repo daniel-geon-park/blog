@@ -3,9 +3,9 @@ layout: post
 title: '<a href="https://github.com/daniel-geon-park/triton_bwd">`triton_bwd`</a>: Enabling Backpropagation for the OpenAI Triton language'
 ---
 
-Everyone knows the [OpenAI Triton language](https://triton-lang.org/) is amazing. Writing CUDA kernels in CUDA C++ is such a pain, so writing Python in a pytorch-like synatx that compiles down to GPU machine code and getting the same blazingly-fast performance is such a godsend.
+Everyone knows the [OpenAI Triton language](https://triton-lang.org/) is amazing. Writing CUDA kernels in CUDA C++ is such a pain, so writing Python in a pytorch-like syntax that compiles down to GPU machine code and getting the same blazingly-fast performance is such a godsend.
 
-But one problem is that unlike PyTorch, automatic differentiation (AD) is not supported in Triton. This is understandable, but when I'm trying a new ML algorithm with a custom operation, such as [hip-attn](https://github.com/DeepAuto-AI/hip-attention), and I also want it to be differentiable so that I can train the model.
+But one problem is that unlike PyTorch, automatic differentiation (AD) is not supported in Triton. This is understandable, but when I'm trying a new ML algorithm with a custom operation, such as [hip-attn](https://github.com/DeepAuto-AI/hip-attention), I also want it to be differentiable so that I can train the model.
 
 In the end, you have to hand-write the backward kernel as well for the best performance, but verifying that my hand-rolled backward kernel actually computes the mathematical derivative of my hand-rolled forward kernel is no easy task. Even if you get it right, each time you change the forward algorithm even a bit, you have to go through the whole debugging process again. But if I could get the correct gradients for my kernel, that would be a great improvement to the situation because then I can at least *check* if my backward kernel is correct or not. Otherwise, I am just running in the dark, with my fingers crossed, and hoping my backward kernel is correct and my model doesn't explode at step 5000 in the training process.
 
